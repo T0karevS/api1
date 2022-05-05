@@ -8,6 +8,8 @@ async function getPosts(){
             <div class="card-body">
                 <h5 class="card-title">${post.title}</h5>
                 <p class="card-text">${post.body}</p>
+                <a href="#" class="card-link" onclick="removePost(${post.id})">Удалиить</a>
+                <a href="#" class="card-link" onclick="selectPost()">Редактировать</a>
             </div>
         </div>        
         `
@@ -26,6 +28,21 @@ async function addPost(){
         body: formData
     });
     const data = await res.json();
-    console.log(data);
+    if(data.status === true)
+    {
+        await getPosts();
+    }
+}
+
+async function removePost(id)
+{
+    const res = await fetch(`http://rp-32/apishka/api1/posts/${id}`,{
+        method: 'DELETE',
+    });
+    const data = await res.json();
+    if(data.status === true)
+    {
+        await getPosts();
+    }
 }
 getPosts();

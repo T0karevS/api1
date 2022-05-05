@@ -23,6 +23,18 @@
                 </div>
                 <button type="submit" class="btn btn-primary" onclick="addPost()">Добавить пост </button>
             </div>
+            <div>
+                <h2>Редактирование поста</h2>
+                <div class="form-group"></div>
+                <label for="title-edit">Заголовок поста</label>
+                <input type="text" class="form-control" id="title-edit" aria-describedby="emailHelp">
+            </div>
+            <div class="form-group">
+                <label for="body-edit">Содержимое</label>
+                <textarea class="form-control" id="body-edit"></textarea>
+
+            </div>
+            <button class="btn btn-primary" onclick="updatePost()">Обновить пост</button>
         </div>
     </div>
     <script src="main.js"></script>
