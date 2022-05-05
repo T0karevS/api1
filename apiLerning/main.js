@@ -1,7 +1,7 @@
-async function getPost(){
-    let res = await fetch('https://jsonplaceholder.typicode.com/posts');
+async function getPosts(){
+    let res = await fetch('http://rp-32/apishka/api1/posts');
     let posts = await res.json();
-    console.log(posts[0].title);
+    document.querySelector('.post-list').innerHTML = '';
     posts.forEach((post) =>{
         document.querySelector('.post-list').innerHTML += `
         <div class="card" style="width: 18rem;">
@@ -11,6 +11,21 @@ async function getPost(){
             </div>
         </div>        
         `
-    });
+    })
 }
-getPost();
+async function addPost(){
+    const title = document.getElementById('title').value,
+        body = document.getElementById('body').value;
+
+    let formData = new FormData();
+    formData.append('title',title);
+    formData.append('body', body);
+
+    const res = await fetch('http://rp-32/apishka/api1/posts',{
+        method: 'POST',
+        body: formData
+    });
+    const data = await res.json();
+    console.log(data);
+}
+getPosts();
