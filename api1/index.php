@@ -1,11 +1,12 @@
 <?php
+require 'conn.php';
+require 'function.php';
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: *');
 header('Access-Control-Allow-Methods: *');
 header('Access-Control-Allow-Credentials: true');
 
-require 'conn.php';
-require 'function.php';
+
 $method = $_SERVER['REQUEST_METHOD'];
 $q = $_GET['q'];
 $params = explode('/',$q);
@@ -48,13 +49,19 @@ elseif ($method === "PATCH")
 {
     if($type === 'posts')
     {
-        PatchPost($connect, $id);
+        if(isset($id))
+        {
+            $data = file_get_contents('php://input');
+            $data = json_decode($data, true);
+            
+            PatchPost($connect, $id, $data);
+        }
     }
 }
-elseif ($method === "PUT")
-{
-    if($type === 'posts')
-    {
-        PutPost($connect, $id);
-    }
-}
+// elseif ($method === "PUT")
+// {
+//     if($type === 'posts')
+//     {
+//         PutPost($connect, $id);
+//     }
+// }
