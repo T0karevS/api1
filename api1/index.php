@@ -58,10 +58,4 @@ elseif ($method === "PATCH")
         }
     }
 }
-// elseif ($method === "PUT")
-// {
-//     if($type === 'posts')
-//     {
-//         PutPost($connect, $id);
-//     }
-// }
+

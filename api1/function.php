@@ -67,36 +67,3 @@ function PatchPost($connect, $id, $data)
     ];
     echo json_encode($res);
 }
-// function PatchPost($connect, $id)
-// {
-
-//     $json = file_get_contents('php://input');
-//     $json = json_decode($json, true);
-//     $a = $json['title'];
-//     $b = $json['body'];
-//     $id = $json['id'];
-//     $idExisting = mysqli_num_rows(mysqli_query($connect, "SELECT * FROM `posts` where `id`='$id'"));
-//     if($idExisting==1)
-//     {
-//         $post = mysqli_query($connect, "UPDATE `posts` SET `title`='$a',`body`='$b' WHERE `id` = '$id'");
-//         http_response_code(201);
-//         $res = [
-//             "status" => true,
-//             "post_id" => $id,
-//             "post_patched_title" => $a,
-//             "post_patched_content" => $b
-//         ];
-//     }
-//     elseif($idExisting==0)
-//     {
-//         $post = mysqli_query($connect, "INSERT INTO `posts` (`id`, `title`, `body`) VALUES ('$id', '$a', '$b')");
-//         http_response_code(201);
-//         $res = [
-//             "status" => true,
-//             "post_id" => $id,
-//             "post_patched_title" => $a,
-//             "post_patched_content" => $b
-//         ];
-//     }
-//     echo json_encode($res);
-// }
