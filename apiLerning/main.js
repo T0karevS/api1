@@ -10,7 +10,7 @@ async function getPosts(){
                 <h5 class="card-title">${post.title}</h5>
                 <p class="card-text">${post.body}</p>
                 <a href="#" class="card-link" onclick="removePost(${post.id})">Удалить</a>
-                <a href="#" class="card-link" onclick="selectPost(${post.id}, ${post.title}, ${post.body})">Редактировать</a>
+                <a href="#" class="card-link" onclick="selectPost(${post.id}, '${post.title}', '${post.body}')">Редактировать</a>
             </div>
         </div>        
         `
@@ -48,7 +48,9 @@ async function removePost(id)
 }
 function selectPost(ids, title, body){
     id = ids;
-    document.getElementById('titleedit1').value = {title};
+    title.toString();
+    body.toString();
+    document.getElementById('titleedit1').value = title;
     document.getElementById('bodyedit1').value = body;
     
 }
@@ -74,3 +76,4 @@ async function updatePost()
     }
 }
 getPosts();
+
